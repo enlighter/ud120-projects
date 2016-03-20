@@ -1,8 +1,7 @@
 #!/usr/bin/python 
 
 """ 
-    skeleton code for k-means clustering mini-project
-
+    Skeleton code for k-means clustering mini-project.
 """
 
 
@@ -22,7 +21,7 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
     """ some plotting code designed to help you visualize your clusters """
 
     ### plot each cluster with a different color--add more colors for
-    ### drawing more than 4 clusters
+    ### drawing more than five clusters
     colors = ["b", "c", "k", "m", "g"]
     for ii, pp in enumerate(pred):
         plt.scatter(features[ii][0], features[ii][1], color = colors[pred[ii]])
@@ -58,31 +57,20 @@ poi, finance_features = targetFeatureSplit( data )
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
-### (as it's currently written, line below assumes 2 features)
+### (as it's currently written, the line below assumes 2 features)
 for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
 
-
-
-from sklearn.cluster import KMeans
-features_list = ["poi", feature_1, feature_2]
-data2 = featureFormat(data_dict, features_list )
-poi, finance_features = targetFeatureSplit( data2 )
-clf = KMeans(n_clusters=2)
-pred = clf.fit_predict( finance_features )
-Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=feature_1, f2_name=feature_2)
-
-
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 
+
+
+
+### rename the "name" parameter when you change the number of features
+### so that the figure gets saved to a different file
 try:
     Draw(pred, finance_features, poi, mark_poi=False, name="clusters.pdf", f1_name=feature_1, f2_name=feature_2)
 except NameError:
     print "no predictions object named pred found, no clusters to plot"
-
-
-
-
-
